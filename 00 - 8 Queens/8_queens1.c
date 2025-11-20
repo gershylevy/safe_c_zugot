@@ -11,6 +11,7 @@
 #define CHESS_BOARD_LENGTH (8)
 #define CHESS_BOARD_WIDTH (8)
 #define NUMBER_OF_QUEENS (8)
+#define ALL_DIRECTIONS (8)
 
 #define EMPTY 0
 #define QUEEN 1
@@ -68,7 +69,7 @@ void print_board(int board[CHESS_BOARD_LENGTH][CHESS_BOARD_WIDTH])
 void all_threats(int board[CHESS_BOARD_LENGTH][CHESS_BOARD_WIDTH])
 {
     int i, j, k, row, col;
-    int directions[8][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
+    int directions[ALL_DIRECTIONS][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
     // clear all threats
     for (i = 0; i < CHESS_BOARD_LENGTH; ++i)
@@ -90,7 +91,7 @@ void all_threats(int board[CHESS_BOARD_LENGTH][CHESS_BOARD_WIDTH])
             if (board[i][j] == QUEEN)
             {
                 // for loop to mark threats in all 8 directions
-                for (k = 0; k < 8; k++)
+                for (k = 0; k < ALL_DIRECTIONS; k++)
                 {
                     row = i + directions[k][0];
                     col = j + directions[k][1];
